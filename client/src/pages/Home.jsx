@@ -33,7 +33,7 @@ const Home = () => {
         data = await axios.post(
           "http://localhost:5000/api/v1/createData",
           formData
-        );
+          );
       }
       
       else{
@@ -50,14 +50,19 @@ const Home = () => {
           description: "",
 
         });
-        
-        
         getData();
-        toast.success("Task is added ")
+        if(update === true){
+          toast.success("Task Updated Successfully")
+          setUpdate(false);
+        }else{
+          toast.success("Task Added Successfully");
+        }
+        
+        
       }
     } catch (error) {
       console.log(error);
-      toast.error("task is not added")
+      toast.error("Task is not added")
     }
   };
   const getData = async () => {
